@@ -7,8 +7,8 @@
     <ProjectGuid>{D1C13831-C17D-457A-9190-CC39E58B2194}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClassLibrary2</RootNamespace>
-    <AssemblyName>ClassLibrary2</AssemblyName>
+    <RootNamespace>PhoneLibrary</RootNamespace>
+    <AssemblyName>PhoneLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
