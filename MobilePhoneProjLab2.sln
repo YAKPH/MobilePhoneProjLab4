@@ -5,6 +5,16 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobilePhoneProjLab2", "MobilePhoneProjLab2\MobilePhoneProjLab2.csproj", "{0ACC187F-5C83-43E2-AF66-3FEEE564E04E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimcorpPhone", "SimcorpPhone", "{759A42E8-60AC-4F36-B24B-52874E2178B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhoneLibrary", "PhoneLibrary", "{5D0B272C-A44A-49AB-9A5B-EF3A9810CD27}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommonLibrary", "CommonLibrary", "{57A6471A-2B71-4D59-9379-618254D477E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "ClassLibrary1\Common.csproj", "{62AA01B5-3C8E-4751-A578-B07D25E31247}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneComponents", "ClassLibrary2\PhoneComponents.csproj", "{D1C13831-C17D-457A-9190-CC39E58B2194}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +25,22 @@ Global
 		{0ACC187F-5C83-43E2-AF66-3FEEE564E04E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ACC187F-5C83-43E2-AF66-3FEEE564E04E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ACC187F-5C83-43E2-AF66-3FEEE564E04E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62AA01B5-3C8E-4751-A578-B07D25E31247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62AA01B5-3C8E-4751-A578-B07D25E31247}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62AA01B5-3C8E-4751-A578-B07D25E31247}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62AA01B5-3C8E-4751-A578-B07D25E31247}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1C13831-C17D-457A-9190-CC39E58B2194}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1C13831-C17D-457A-9190-CC39E58B2194}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1C13831-C17D-457A-9190-CC39E58B2194}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1C13831-C17D-457A-9190-CC39E58B2194}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0ACC187F-5C83-43E2-AF66-3FEEE564E04E} = {759A42E8-60AC-4F36-B24B-52874E2178B9}
+		{62AA01B5-3C8E-4751-A578-B07D25E31247} = {57A6471A-2B71-4D59-9379-618254D477E3}
+		{D1C13831-C17D-457A-9190-CC39E58B2194} = {5D0B272C-A44A-49AB-9A5B-EF3A9810CD27}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28A63A9B-6FC5-4AD5-BB59-1AEC63A55400}
