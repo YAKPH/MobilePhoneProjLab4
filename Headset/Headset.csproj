@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{62AA01B5-3C8E-4751-A578-B07D25E31247}</ProjectGuid>
+    <ProjectGuid>{93790F72-FDE8-450A-BF66-CCBF4930C52A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Common</RootNamespace>
-    <AssemblyName>Common</AssemblyName>
+    <RootNamespace>Headset</RootNamespace>
+    <AssemblyName>Headset</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,8 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IPlayback.cs" />
+    <Compile Include="EarForceStealthHeadset.cs" />
+    <Compile Include="HeadsetFactory.cs" />
+    <Compile Include="iPhoneHeadset.cs" />
+    <Compile Include="SamsungHeadset.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\Common.csproj">
+      <Project>{62aa01b5-3c8e-4751-a578-b07d25e31247}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

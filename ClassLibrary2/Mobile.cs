@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Headset;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace PhoneComponents
         public abstract BatteryBase Battery { get; }
         public abstract Camera Camera { get; }
         public abstract SimcardBase Simcard { get; }
+        public abstract HeadsetFactory Headset { get; }
 
         public override string ToString()
         {
@@ -21,6 +23,8 @@ namespace PhoneComponents
             descriptionBuilder.AppendLine($"Battery Type: {Battery.ToString()}");
             descriptionBuilder.AppendLine($"Camera Parameters: {Camera.ToString()}");
             descriptionBuilder.AppendLine($"Sim Card: {Simcard.ToString()}");
+
+            descriptionBuilder.AppendLine($"{Headset.ToString()}");
             return descriptionBuilder.ToString();
         }
     }

@@ -49,5 +49,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimCorpMobile.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\Common.csproj">
+      <Project>{62aa01b5-3c8e-4751-a578-b07d25e31247}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Headset\Headset.csproj">
+      <Project>{93790f72-fde8-450a-bf66-ccbf4930c52a}</Project>
+      <Name>Headset</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
