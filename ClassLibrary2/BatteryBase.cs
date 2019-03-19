@@ -18,19 +18,10 @@ namespace PhoneComponents
             vBatteryCapacityMAh = batteryCapacityMAh;
         }
 
-        public double ShowChargingTime(int chargerCapacityMAh)
-        {
-            double hours = 0;
-            if (chargerCapacityMAh != 0)
-            { hours = vBatteryCapacityMAh / chargerCapacityMAh; }
-            return hours;
-        }
 
         public override string ToString()
-        {
-            int chargerCapacityMAh = 300;
-            var hours = ShowChargingTime(chargerCapacityMAh);
-            string message = $"Type {vBatteryType.ToString()}, charging time {hours} hours";
+        {       
+            string message = $"Type {vBatteryType.ToString()}";
             return message;
         }
     }

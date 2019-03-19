@@ -50,6 +50,10 @@
     <Compile Include="SimCorpMobile.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Chargers\Chargers.csproj">
+      <Project>{9740c68f-0266-4a83-bf5b-cd7b1832cd08}</Project>
+      <Name>Chargers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ClassLibrary1\Common.csproj">
       <Project>{62aa01b5-3c8e-4751-a578-b07d25e31247}</Project>
       <Name>Common</Name>

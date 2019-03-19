@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Headset", "Headset\Headset.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HeadSets", "HeadSets", "{27D7F5A0-AFCC-4ABB-91AA-9BC2FFB13850}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chargers", "Chargers\Chargers.csproj", "{9740C68F-0266-4A83-BF5B-CD7B1832CD08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{93790F72-FDE8-450A-BF66-CCBF4930C52A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93790F72-FDE8-450A-BF66-CCBF4930C52A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93790F72-FDE8-450A-BF66-CCBF4930C52A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9740C68F-0266-4A83-BF5B-CD7B1832CD08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9740C68F-0266-4A83-BF5B-CD7B1832CD08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9740C68F-0266-4A83-BF5B-CD7B1832CD08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9740C68F-0266-4A83-BF5B-CD7B1832CD08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{62AA01B5-3C8E-4751-A578-B07D25E31247} = {57A6471A-2B71-4D59-9379-618254D477E3}
 		{D1C13831-C17D-457A-9190-CC39E58B2194} = {5D0B272C-A44A-49AB-9A5B-EF3A9810CD27}
 		{93790F72-FDE8-450A-BF66-CCBF4930C52A} = {27D7F5A0-AFCC-4ABB-91AA-9BC2FFB13850}
+		{9740C68F-0266-4A83-BF5B-CD7B1832CD08} = {27D7F5A0-AFCC-4ABB-91AA-9BC2FFB13850}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28A63A9B-6FC5-4AD5-BB59-1AEC63A55400}

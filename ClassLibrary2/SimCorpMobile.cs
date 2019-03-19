@@ -1,4 +1,6 @@
-﻿using Headset;
+﻿using Common;
+using Chargers;
+using Headset;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +16,16 @@ namespace PhoneComponents
         private readonly BatteryBase vBattery;
         private readonly SimcardBase vSimcard;
         private readonly Camera vCamera;
-        private readonly HeadsetFactory vHeadSet;
+        private readonly IPlayback vHeadSet;
+        private readonly ICharger vCharger;
 
         public override ScreenBase Screen { get { return vScreen; } }
         public override BatteryBase Battery { get { return vBattery; } }
         public override SimcardBase Simcard { get { return vSimcard; } }
         public override Camera Camera { get { return vCamera; } }
-        public override HeadsetFactory Headset { get { return vHeadSet; } }
+        public override IPlayback Headset { get { return vHeadSet; } }
+        public override ICharger Charger { get { return vCharger; } }
+
 
         public SimCorpMobile()
         {
@@ -31,10 +36,6 @@ namespace PhoneComponents
             string number = "+380959992299";
             var format = SimcardBase.SimFormats.Nano;
             vSimcard = new SimcardBase(number, format);
-
-            HeadsetTypes userHeadSettype = SelectHeadsetType();
-            vHeadSet = new HeadsetFactory(userHeadSettype);
-            
 
             vCamera = new Camera
             {
@@ -50,35 +51,11 @@ namespace PhoneComponents
                 Diagonal = 3.5,
                 ScreenType = ScreenBase.ScreenTypes.LCD
             };
+    
+
+            vHeadSet = HeadsetFactory.GetHeadSet();
+            vCharger = ChargerFactory.GetCharger();
         }
 
-        private HeadsetTypes SelectHeadsetType()
-        {
-            HeadsetTypes type; 
-
-            Console.WriteLine("Choose type of Head set to use:");
-            Console.WriteLine($"1-{ HeadsetTypes.EarForceStealth}");
-            Console.WriteLine($"2-{ HeadsetTypes.iPhone}");
-            Console.WriteLine($"3-{ HeadsetTypes.Samsung}");
-
-            string input;
-            int inputType;
-
-            do
-            {input = Console.ReadLine();
-            } while (!Int32.TryParse(input, out inputType));
-
-            switch (inputType)
-            {
-                case 1: {type = HeadsetTypes.EarForceStealth; break; }
-                case 2: {type = HeadsetTypes.iPhone; break; }
-                case 3: {type = HeadsetTypes.Samsung; break; }
-                default:
-                    { type = HeadsetTypes.Samsung; break; }
-
-            }
-
-            return type;
-        }
     }
 }

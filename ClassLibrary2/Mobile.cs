@@ -1,4 +1,5 @@
-﻿using Headset;
+﻿using Common;
+using Headset;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,17 +15,22 @@ namespace PhoneComponents
         public abstract BatteryBase Battery { get; }
         public abstract Camera Camera { get; }
         public abstract SimcardBase Simcard { get; }
-        public abstract HeadsetFactory Headset { get; }
+        public abstract IPlayback Headset { get; }
+        public abstract ICharger Charger { get; }
 
         public override string ToString()
         {
+            Headset.Play();
+
+            double time = Charger.CalculateChargingTime(Battery.vBatteryCapacityMAh);
+            Console.WriteLine($"Charging time for this battery and charger is {time} hours.");
+
+            Console.WriteLine("PHONE DESCRIPTION:");
             var descriptionBuilder = new StringBuilder();
             descriptionBuilder.AppendLine($"Screen Type: {Screen.ToString()}");
             descriptionBuilder.AppendLine($"Battery Type: {Battery.ToString()}");
             descriptionBuilder.AppendLine($"Camera Parameters: {Camera.ToString()}");
             descriptionBuilder.AppendLine($"Sim Card: {Simcard.ToString()}");
-
-            descriptionBuilder.AppendLine($"{Headset.ToString()}");
             return descriptionBuilder.ToString();
         }
     }

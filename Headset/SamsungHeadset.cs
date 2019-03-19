@@ -9,7 +9,7 @@ namespace Headset
 {
     public class SamsungHeadset : IPlayback
     {
-        public void Play(object data)
+        public void Play()
         {
             Console.WriteLine($"Playing {nameof(SamsungHeadset)} sound");
         }

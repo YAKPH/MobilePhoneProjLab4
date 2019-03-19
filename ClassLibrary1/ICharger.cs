@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public interface IPlayback
+    public interface ICharger
     {
-        void Play();
+        double CalculateChargingTime(int batteryCapacityMAh);
     }
 }

@@ -9,33 +9,36 @@ namespace Headset
 {
     public class HeadsetFactory
     {
-        private IPlayback vSpecHeadSet;
-        public enum HeadsetTypes { iPhone, Samsung, EarForceStealth };
-
-        public HeadsetFactory(HeadsetTypes headsetType)
-        {
-            vSpecHeadSet = GetHeadSet(headsetType);
-        }          
+         public enum HeadsetTypes { iPhone, Samsung, EarForceStealth };
+      
         
-        public IPlayback GetHeadSet(HeadsetTypes headsetType)
+        public static IPlayback GetHeadSet()
         {
             IPlayback headset = null;
 
-            switch (headsetType)
+            Console.WriteLine("Choose type of Head set to use:");
+            Console.WriteLine($"1-{ HeadsetTypes.iPhone}");
+            Console.WriteLine($"2-{ HeadsetTypes.Samsung}");
+            Console.WriteLine($"3-{ HeadsetTypes.EarForceStealth}");
+
+            string input;
+            int inputType;
+
+            do
             {
-                case HeadsetTypes.iPhone: { headset = new iPhoneHeadset(); break; }
-                case HeadsetTypes.Samsung: { headset = new SamsungHeadset();  break; }
-                case HeadsetTypes.EarForceStealth: { headset = new EarForceStealthHeadset(); break; }
+                input = Console.ReadLine();
+            } while (!Int32.TryParse(input, out inputType));
+
+            switch (inputType)
+            {
+                case 1: { headset = new iPhoneHeadset(); break; }
+                case 2: { headset = new SamsungHeadset();  break; }
+                case 3: { headset = new EarForceStealthHeadset(); break; }
 
             }
             return headset;
 
         }
 
-        public override string ToString()
-        {   
-            this.vSpecHeadSet.Play(this);
-            return "";
-        }
     }
 }
