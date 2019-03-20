@@ -50,9 +50,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Chargers\Chargers.csproj">
+      <Project>{9740C68F-0266-4A83-BF5B-CD7B1832CD08}</Project>
+      <Name>Chargers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClassLibrary1\Common.csproj">
+      <Project>{62aa01b5-3c8e-4751-a578-b07d25e31247}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ClassLibrary2\PhoneComponents.csproj">
       <Project>{d1c13831-c17d-457a-9190-cc39e58b2194}</Project>
       <Name>PhoneComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Headset\Headset.csproj">
+      <Project>{93790F72-FDE8-450A-BF66-CCBF4930C52A}</Project>
+      <Name>Headset</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

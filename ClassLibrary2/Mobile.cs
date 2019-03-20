@@ -25,6 +25,7 @@ namespace PhoneComponents
             double time = Charger.CalculateChargingTime(Battery.vBatteryCapacityMAh);
             Console.WriteLine($"Charging time for this battery and charger is {time} hours.");
 
+            Console.WriteLine();
             Console.WriteLine("PHONE DESCRIPTION:");
             var descriptionBuilder = new StringBuilder();
             descriptionBuilder.AppendLine($"Screen Type: {Screen.ToString()}");

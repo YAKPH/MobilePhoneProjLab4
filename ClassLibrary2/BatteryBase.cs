@@ -21,7 +21,7 @@ namespace PhoneComponents
 
         public override string ToString()
         {       
-            string message = $"Type {vBatteryType.ToString()}";
+            string message = $"Type {vBatteryType.ToString()}, capacity {vBatteryCapacityMAh} MAh";
             return message;
         }
     }

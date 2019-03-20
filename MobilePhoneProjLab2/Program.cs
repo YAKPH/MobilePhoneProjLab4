@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common;
+using Chargers;
+using Headset;
 using PhoneComponents;
 
 namespace MobilePhoneProjLab2
@@ -11,7 +14,10 @@ namespace MobilePhoneProjLab2
     {
         static void Main(string[] args)
         {
-            var mymobile = new SimCorpMobile();
+            IPlayback headset = HeadsetFactory.GetHeadSet();
+            ICharger charger = ChargerFactory.GetCharger();
+
+            var mymobile = new SimCorpMobile(headset,charger);
             Console.WriteLine(mymobile);
             Console.ReadKey();
 

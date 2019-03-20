@@ -27,7 +27,7 @@ namespace PhoneComponents
         public override ICharger Charger { get { return vCharger; } }
 
 
-        public SimCorpMobile()
+        public SimCorpMobile(IPlayback  headset, ICharger charger)
         {
             var type = BatteryBase.BatteryTypes.LithiumIonBattery;
             int capacityMAh = 2200;
@@ -51,10 +51,10 @@ namespace PhoneComponents
                 Diagonal = 3.5,
                 ScreenType = ScreenBase.ScreenTypes.LCD
             };
-    
 
-            vHeadSet = HeadsetFactory.GetHeadSet();
-            vCharger = ChargerFactory.GetCharger();
+
+            vHeadSet = headset;
+            vCharger = charger;
         }
 
     }
