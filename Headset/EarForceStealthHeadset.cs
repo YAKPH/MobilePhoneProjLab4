@@ -9,9 +9,15 @@ namespace Headset
 {
     class EarForceStealthHeadset : IPlayback
     {
+        private IOutput vOutput;
+
+        public EarForceStealthHeadset(IOutput output)
+        {
+            vOutput = output;
+        }
         public void Play()
         {
-            Console.WriteLine($"Playing {nameof(EarForceStealthHeadset)} sound");
+            vOutput.WriteLine($"Playing {nameof(EarForceStealthHeadset)} sound");
         }
     }
 }

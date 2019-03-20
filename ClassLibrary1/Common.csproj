@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICharger.cs" />
+    <Compile Include="IOutput.cs" />
     <Compile Include="IPlayback.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

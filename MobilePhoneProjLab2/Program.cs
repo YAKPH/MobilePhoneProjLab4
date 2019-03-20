@@ -7,6 +7,7 @@ using Common;
 using Chargers;
 using Headset;
 using PhoneComponents;
+using Output;
 
 namespace MobilePhoneProjLab2
 {
@@ -14,10 +15,12 @@ namespace MobilePhoneProjLab2
     {
         static void Main(string[] args)
         {
-            IPlayback headset = HeadsetFactory.GetHeadSet();
-            ICharger charger = ChargerFactory.GetCharger();
 
-            var mymobile = new SimCorpMobile(headset,charger);
+            ConsoleOutput output = new ConsoleOutput();
+            IPlayback headset = HeadsetFactory.GetHeadSet(output);
+            ICharger charger = ChargerFactory.GetCharger(output);
+
+            var mymobile = new SimCorpMobile(headset,charger,output);
             Console.WriteLine(mymobile);
             Console.ReadKey();
 

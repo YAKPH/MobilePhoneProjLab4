@@ -9,9 +9,15 @@ namespace Headset
 {
     public class SamsungHeadset : IPlayback
     {
+        private IOutput vOutput;
+
+        public SamsungHeadset(IOutput output)
+        {
+            vOutput = output;
+        }
         public void Play()
         {
-            Console.WriteLine($"Playing {nameof(SamsungHeadset)} sound");
+            vOutput.WriteLine($"Playing {nameof(SamsungHeadset)} sound");
         }
     }
 }

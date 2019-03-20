@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0ACC187F-5C83-43E2-AF66-3FEEE564E04E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>MobilePhoneProjLab2</RootNamespace>
-    <AssemblyName>MobilePhoneProjLab2</AssemblyName>
+    <ProjectGuid>{8E0AD61F-7096-4477-973B-6375C194F92B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Output</RootNamespace>
+    <AssemblyName>Output</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,32 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="ConsoleOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WinFormOutput.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Chargers\Chargers.csproj">
-      <Project>{9740C68F-0266-4A83-BF5B-CD7B1832CD08}</Project>
-      <Name>Chargers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ClassLibrary1\Common.csproj">
-      <Project>{62aa01b5-3c8e-4751-a578-b07d25e31247}</Project>
+      <Project>{62AA01B5-3C8E-4751-A578-B07D25E31247}</Project>
       <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ClassLibrary2\PhoneComponents.csproj">
-      <Project>{d1c13831-c17d-457a-9190-cc39e58b2194}</Project>
-      <Name>PhoneComponents</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Headset\Headset.csproj">
-      <Project>{93790F72-FDE8-450A-BF66-CCBF4930C52A}</Project>
-      <Name>Headset</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Output\Output.csproj">
-      <Project>{8e0ad61f-7096-4477-973b-6375c194f92b}</Project>
-      <Name>Output</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

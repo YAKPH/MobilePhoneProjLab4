@@ -18,21 +18,27 @@ namespace PhoneComponents
         public abstract IPlayback Headset { get; }
         public abstract ICharger Charger { get; }
 
+        public abstract IOutput Output { get; }
+
         public override string ToString()
         {
             Headset.Play();
 
             double time = Charger.CalculateChargingTime(Battery.vBatteryCapacityMAh);
-            Console.WriteLine($"Charging time for this battery and charger is {time} hours.");
+            Output.WriteLine($"Charging time for this battery and charger is {time} hours.");
 
-            Console.WriteLine();
-            Console.WriteLine("PHONE DESCRIPTION:");
+            /*
+            Output.WriteLine("");
+            Output.WriteLine("PHONE DESCRIPTION:");
+            
             var descriptionBuilder = new StringBuilder();
             descriptionBuilder.AppendLine($"Screen Type: {Screen.ToString()}");
             descriptionBuilder.AppendLine($"Battery Type: {Battery.ToString()}");
             descriptionBuilder.AppendLine($"Camera Parameters: {Camera.ToString()}");
             descriptionBuilder.AppendLine($"Sim Card: {Simcard.ToString()}");
             return descriptionBuilder.ToString();
+            */
+            return "";
         }
     }
 }

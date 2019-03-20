@@ -9,9 +9,16 @@ namespace Headset
 {
     class iPhoneHeadset : IPlayback
     {
+        private IOutput vOutput;
+
+        public iPhoneHeadset(IOutput output)
+        {
+            vOutput = output;
+        }
+
         public void Play()
         {
-            Console.WriteLine($"Playing {nameof(iPhoneHeadset)} sound");
+            vOutput.WriteLine($"Playing {nameof(iPhoneHeadset)} sound");
         }
     }
 }

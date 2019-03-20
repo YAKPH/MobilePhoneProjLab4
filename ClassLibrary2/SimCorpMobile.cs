@@ -18,6 +18,7 @@ namespace PhoneComponents
         private readonly Camera vCamera;
         private readonly IPlayback vHeadSet;
         private readonly ICharger vCharger;
+        private readonly IOutput vOutput;
 
         public override ScreenBase Screen { get { return vScreen; } }
         public override BatteryBase Battery { get { return vBattery; } }
@@ -26,8 +27,9 @@ namespace PhoneComponents
         public override IPlayback Headset { get { return vHeadSet; } }
         public override ICharger Charger { get { return vCharger; } }
 
+        public override IOutput Output { get { return vOutput; } }
 
-        public SimCorpMobile(IPlayback  headset, ICharger charger)
+        public SimCorpMobile(IPlayback  headset, ICharger charger, IOutput output)
         {
             var type = BatteryBase.BatteryTypes.LithiumIonBattery;
             int capacityMAh = 2200;
@@ -52,7 +54,7 @@ namespace PhoneComponents
                 ScreenType = ScreenBase.ScreenTypes.LCD
             };
 
-
+            vOutput = output;
             vHeadSet = headset;
             vCharger = charger;
         }
