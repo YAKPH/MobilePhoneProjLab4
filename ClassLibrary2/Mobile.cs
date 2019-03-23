@@ -15,9 +15,9 @@ namespace PhoneComponents
         public abstract BatteryBase Battery { get; }
         public abstract Camera Camera { get; }
         public abstract SimcardBase Simcard { get; }
+
         public abstract IPlayback Headset { get; }
         public abstract ICharger Charger { get; }
-
         public abstract IOutput Output { get; }
 
         public override string ToString()

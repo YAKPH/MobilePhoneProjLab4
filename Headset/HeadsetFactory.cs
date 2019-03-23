@@ -11,28 +11,15 @@ namespace Headset
     {
         public enum HeadsetTypes { iPhone, Samsung, EarForceStealth };
 
-        public static IPlayback GetHeadSet(IOutput output)
+        public static IPlayback GetHeadSet(IOutput outputType,int inputType)
         {
-            IPlayback headset = null;
+           IPlayback headset = null;
 
-            output.WriteLine("Choose type of Head set to use:");
-            output.WriteLine($"1-{ HeadsetTypes.iPhone}");
-            output.WriteLine($"2-{ HeadsetTypes.Samsung}");
-            output.WriteLine($"3-{ HeadsetTypes.EarForceStealth}");
-
-            string input;
-            int inputType;
-
-            do
+           switch (inputType)
             {
-                input = Console.ReadLine(); //!!!!!!!!!!!!!!!!!!
-            } while (!Int32.TryParse(input, out inputType));
-
-            switch (inputType)
-            {
-                case 1: { headset = new iPhoneHeadset(output); break; }
-                case 2: { headset = new SamsungHeadset(output);  break; }
-                case 3: { headset = new EarForceStealthHeadset(output); break; }
+                case 1: { headset = new iPhoneHeadset(outputType); break; }
+                case 2: { headset = new SamsungHeadset(outputType);  break; }
+                case 3: { headset = new EarForceStealthHeadset(outputType); break; }
 
             }
             return headset;

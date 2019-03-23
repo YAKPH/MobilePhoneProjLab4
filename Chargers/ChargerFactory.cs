@@ -10,23 +10,10 @@ namespace Chargers
     public class ChargerFactory
     {
 
-        public static ICharger GetCharger(IOutput output)
+        public static ICharger GetCharger(int inputType)
         {
             ICharger charger = null;
-
-            output.WriteLine("Choose type of Charger to use:");
-            output.WriteLine("1- Car Charger");
-            output.WriteLine("2- Powerbank");
-            output.WriteLine("3- Wall Charger");
-
-            string input;
-            int inputType;
-
-            do
-            {
-                input = Console.ReadLine();   //!!!!!!!!!!!!!!!
-            } while (!Int32.TryParse(input, out inputType));        
-
+            
             switch (inputType)
             {
                 case 1: { charger = new CarCharger(); break; }
