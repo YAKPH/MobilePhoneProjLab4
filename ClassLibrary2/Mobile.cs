@@ -27,17 +27,14 @@ namespace PhoneComponents
             double time = Charger.CalculateChargingTime(Battery.vBatteryCapacityMAh);
             Output.WriteLine($"Charging time for this battery and charger is {time} hours.");
 
-            /*
-            Output.WriteLine("");
-            Output.WriteLine("PHONE DESCRIPTION:");
-            
-            var descriptionBuilder = new StringBuilder();
-            descriptionBuilder.AppendLine($"Screen Type: {Screen.ToString()}");
-            descriptionBuilder.AppendLine($"Battery Type: {Battery.ToString()}");
-            descriptionBuilder.AppendLine($"Camera Parameters: {Camera.ToString()}");
-            descriptionBuilder.AppendLine($"Sim Card: {Simcard.ToString()}");
-            return descriptionBuilder.ToString();
-            */
+            string phoneParams;
+            phoneParams = "OTHER PHONE DESCRIPTION:\n";
+            phoneParams += $"Screen Type: { Screen.ToString()}\n";
+            phoneParams += $"Battery Type: {Battery.ToString()}\n";
+            phoneParams += $"Camera Parameters: {Camera.ToString()}\n";
+            phoneParams += $"Sim Card: {Simcard.ToString()}\n";
+            Output.WriteLine(phoneParams);
+           
             return "";
         }
     }

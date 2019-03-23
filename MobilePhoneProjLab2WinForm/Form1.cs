@@ -48,6 +48,32 @@ namespace MobilePhoneProjLab2WinForm
 
         private void showInfob_Click(object sender, EventArgs e)
         {
+            SetHeadSetType();
+            SetChargerType();
+
+            if (vCharger != null)
+                if (vHeadset != null)
+                {
+                    var mymobile = new SimCorpMobile(vHeadset, vCharger, vOutputType);
+                    mymobile.ToString();
+                }
+
+        }
+
+        private void SetChargerType()
+        {
+            if (this.rbChargerCar.Checked)
+            {
+                vCharger = ChargerFactory.GetCharger(1);
+            }
+            else if (this.rbChargerPowerbank.Checked)
+            { vCharger = ChargerFactory.GetCharger(2); }
+            else if (this.rbChargerWall.Checked)
+            { vCharger = ChargerFactory.GetCharger(3); }
+        }
+
+        private void SetHeadSetType()
+        {
             if (this.rbHeadSetiPhone.Checked)
             {
                 vHeadset = HeadsetFactory.GetHeadSet(this.vOutputType, 1);
@@ -56,25 +82,6 @@ namespace MobilePhoneProjLab2WinForm
             { vHeadset = HeadsetFactory.GetHeadSet(this.vOutputType, 2); }
             else if (this.rbHeadSetEFStealth.Checked)
             { vHeadset = HeadsetFactory.GetHeadSet(this.vOutputType, 3); }
-
-
-            if (this.rbChargerCar.Checked)
-            { vCharger =ChargerFactory.GetCharger(1);
-            }
-            else if (this.rbChargerPowerbank.Checked)
-            { vCharger = ChargerFactory.GetCharger(2); }
-            else if (this.rbChargerWall.Checked)
-            { vCharger = ChargerFactory.GetCharger(3); }
-
-            if (vCharger!=null)
-             if (vHeadset!=null)
-                {
-                    var mymobile = new SimCorpMobile(vHeadset, vCharger, vOutputType);
-                    mymobile.ToString();
-                }
-           
         }
-
-
     }
 }
