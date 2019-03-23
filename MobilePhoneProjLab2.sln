@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimcorpPhoneWinForm", "Simc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobilePhoneProjLab2WinForm", "MobilePhoneProjLab2WinForm\MobilePhoneProjLab2WinForm.csproj", "{4651820D-3E37-4C7E-A15C-2AFE8E65C577}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{325F96F6-4A57-47FA-B4E5-23281AB06527}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{4651820D-3E37-4C7E-A15C-2AFE8E65C577}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4651820D-3E37-4C7E-A15C-2AFE8E65C577}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4651820D-3E37-4C7E-A15C-2AFE8E65C577}.Release|Any CPU.Build.0 = Release|Any CPU
+		{325F96F6-4A57-47FA-B4E5-23281AB06527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{325F96F6-4A57-47FA-B4E5-23281AB06527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{325F96F6-4A57-47FA-B4E5-23281AB06527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{325F96F6-4A57-47FA-B4E5-23281AB06527}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +79,7 @@ Global
 		{9740C68F-0266-4A83-BF5B-CD7B1832CD08} = {27D7F5A0-AFCC-4ABB-91AA-9BC2FFB13850}
 		{8E0AD61F-7096-4477-973B-6375C194F92B} = {27D7F5A0-AFCC-4ABB-91AA-9BC2FFB13850}
 		{4651820D-3E37-4C7E-A15C-2AFE8E65C577} = {1EF23F1C-7E5B-4798-B832-39339046B9B4}
+		{325F96F6-4A57-47FA-B4E5-23281AB06527} = {1EF23F1C-7E5B-4798-B832-39339046B9B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28A63A9B-6FC5-4AD5-BB59-1AEC63A55400}
