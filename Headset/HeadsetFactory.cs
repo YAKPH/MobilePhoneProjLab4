@@ -7,19 +7,20 @@ using System.Threading.Tasks;
 
 namespace Headset
 {
+    public enum HeadsetTypes { iPhone, Samsung, EarForceStealth };
+
     public class HeadsetFactory
     {
-        public enum HeadsetTypes { iPhone, Samsung, EarForceStealth };
-
-        public static IPlayback GetHeadSet(IOutput outputType,int inputType)
+    
+        public static IPlayback GetHeadSet(IOutput outputType, HeadsetTypes hsType)
         {
            IPlayback headset = null;
 
-           switch (inputType)
+           switch (hsType)
             {
-                case 1: { headset = new iPhoneHeadset(outputType); break; }
-                case 2: { headset = new SamsungHeadset(outputType);  break; }
-                case 3: { headset = new EarForceStealthHeadset(outputType); break; }
+                case HeadsetTypes.iPhone: { headset = new iPhoneHeadset(outputType); break; }
+                case HeadsetTypes.Samsung: { headset = new SamsungHeadset(outputType);  break; }
+                case HeadsetTypes.EarForceStealth: { headset = new EarForceStealthHeadset(outputType); break; }
 
             }
             return headset;

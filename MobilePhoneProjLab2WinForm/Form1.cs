@@ -63,25 +63,23 @@ namespace MobilePhoneProjLab2WinForm
         private void SetChargerType()
         {
             if (this.rbChargerCar.Checked)
-            {
-                vCharger = ChargerFactory.GetCharger(1);
-            }
+            { vCharger = ChargerFactory.GetCharger(ChargerTypes.Car); }
             else if (this.rbChargerPowerbank.Checked)
-            { vCharger = ChargerFactory.GetCharger(2); }
+            { vCharger = ChargerFactory.GetCharger(ChargerTypes.Powerbk); }
             else if (this.rbChargerWall.Checked)
-            { vCharger = ChargerFactory.GetCharger(3); }
+            { vCharger = ChargerFactory.GetCharger(ChargerTypes.Wall); }
         }
 
         private void SetHeadSetType()
         {
             if (this.rbHeadSetiPhone.Checked)
             {
-                vHeadset = HeadsetFactory.GetHeadSet(this.vOutputType, 1);
+                vHeadset = HeadsetFactory.GetHeadSet(this.vOutputType, HeadsetTypes.iPhone);
             }
             else if (this.rbHeadSetSamsung.Checked)
-            { vHeadset = HeadsetFactory.GetHeadSet(this.vOutputType, 2); }
+            { vHeadset = HeadsetFactory.GetHeadSet(this.vOutputType, HeadsetTypes.Samsung); }
             else if (this.rbHeadSetEFStealth.Checked)
-            { vHeadset = HeadsetFactory.GetHeadSet(this.vOutputType, 3); }
+            { vHeadset = HeadsetFactory.GetHeadSet(this.vOutputType, HeadsetTypes.EarForceStealth); }
         }
     }
 }
