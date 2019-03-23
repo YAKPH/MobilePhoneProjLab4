@@ -1,6 +1,7 @@
 ﻿using Chargers;
 using Common;
 using Headset;
+using PhoneComponents;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,10 +19,18 @@ namespace MobilePhoneProjLab2WinForm
     {
         private IPlayback vHeadset;
         private ICharger vCharger;
+        private IOutput vOutputType;
 
         public Form1(IOutput myOutputType)
         {
-            InitializeComponent(myOutputType);
+            InitializeComponent();
+            InitializeComponentOutput(myOutputType);
+        }
+
+        private void InitializeComponentOutput(IOutput myOutputType)
+        {
+            vOutputType = myOutputType;
+
         }
 
         public  void rbHeadSetiPhone_CheckedChanged(object sender, EventArgs e)
@@ -37,7 +46,7 @@ namespace MobilePhoneProjLab2WinForm
         public void rbChargerWall_CheckedChanged(object sender, EventArgs e)
         { }
 
-        private void showHSb_Click(object sender, EventArgs e)
+        private void showInfob_Click(object sender, EventArgs e)
         {
             if (this.rbHeadSetiPhone.Checked)
             {
@@ -48,11 +57,7 @@ namespace MobilePhoneProjLab2WinForm
             else if (this.rbHeadSetEFStealth.Checked)
             { vHeadset = HeadsetFactory.GetHeadSet(this.vOutputType, 3); }
 
-            vHeadset.Play();
-        }
 
-        private void showChrgb_Click(object sender, EventArgs e)
-        {
             if (this.rbChargerCar.Checked)
             { vCharger =ChargerFactory.GetCharger(1);
             }
@@ -61,11 +66,15 @@ namespace MobilePhoneProjLab2WinForm
             else if (this.rbChargerWall.Checked)
             { vCharger = ChargerFactory.GetCharger(3); }
 
-          //  var mymobile = new SimCorpMobile(headset, charger, outputType)
-            //double time = vCharger.CalculateChargingTime(Battery.vBatteryCapacityMAh);
-            //vOutputType.WriteLine($"Charging time for this battery and charger is {time} hours.");
-
+            if (vCharger!=null)
+             if (vHeadset!=null)
+                {
+                    var mymobile = new SimCorpMobile(vHeadset, vCharger, vOutputType);
+                    mymobile.ToString();
+                }
+           
         }
+
 
     }
 }
