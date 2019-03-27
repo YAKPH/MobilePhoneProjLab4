@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Headset.HeadsetFactory;
+using PhoneLibrary;
 
 namespace PhoneComponents   
 {
@@ -19,11 +20,18 @@ namespace PhoneComponents
         private readonly IPlayback vHeadSet;
         private readonly ICharger vCharger;
         private readonly IOutput vOutput;
+        private  SMSProvider vSMSProvider;
+
+
+        public override SMSProvider SMSProvider
+        { get { return vSMSProvider; }
+            set { vSMSProvider =value;} }
 
         public override ScreenBase Screen { get { return vScreen; } }
         public override BatteryBase Battery { get { return vBattery; } }
         public override SimcardBase Simcard { get { return vSimcard; } }
         public override Camera Camera { get { return vCamera; } }
+
         public override IPlayback Headset { get { return vHeadSet; } }
         public override ICharger Charger { get { return vCharger; } }
 

@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobilePhoneProjLab2", "MobilePhoneProjLab2\MobilePhoneProjLab2.csproj", "{0ACC187F-5C83-43E2-AF66-3FEEE564E04E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimcorpPhoneConsole", "SimcorpPhoneConsole", "{759A42E8-60AC-4F36-B24B-52874E2178B9}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhoneLibrary", "PhoneLibrary", "{5D0B272C-A44A-49AB-9A5B-EF3A9810CD27}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommonLibrary", "CommonLibrary", "{57A6471A-2B71-4D59-9379-618254D477E3}"
@@ -35,10 +31,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0ACC187F-5C83-43E2-AF66-3FEEE564E04E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0ACC187F-5C83-43E2-AF66-3FEEE564E04E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0ACC187F-5C83-43E2-AF66-3FEEE564E04E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0ACC187F-5C83-43E2-AF66-3FEEE564E04E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{62AA01B5-3C8E-4751-A578-B07D25E31247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{62AA01B5-3C8E-4751-A578-B07D25E31247}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62AA01B5-3C8E-4751-A578-B07D25E31247}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -72,7 +64,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{0ACC187F-5C83-43E2-AF66-3FEEE564E04E} = {759A42E8-60AC-4F36-B24B-52874E2178B9}
 		{62AA01B5-3C8E-4751-A578-B07D25E31247} = {57A6471A-2B71-4D59-9379-618254D477E3}
 		{D1C13831-C17D-457A-9190-CC39E58B2194} = {5D0B272C-A44A-49AB-9A5B-EF3A9810CD27}
 		{93790F72-FDE8-450A-BF66-CCBF4930C52A} = {27D7F5A0-AFCC-4ABB-91AA-9BC2FFB13850}

@@ -17,14 +17,20 @@ namespace MobilePhoneProjLab2WinForm
 {
     public partial class Form1 : Form
     {
-        private IPlayback vHeadset;
-        private ICharger vCharger;
         private IOutput vOutputType;
+        private Mobile vMyMobile;
 
-        public Form1(IOutput myOutputType)
+
+        public Form1(IOutput myOutputType, Mobile mymobile)
         {
             InitializeComponent();
             InitializeComponentOutput(myOutputType);
+            InitializeComponentMobile(mymobile);
+        }
+
+        private void InitializeComponentMobile(Mobile mymobile)
+        {
+            vMyMobile = mymobile;
         }
 
         private void InitializeComponentOutput(IOutput myOutputType)
@@ -32,54 +38,12 @@ namespace MobilePhoneProjLab2WinForm
             vOutputType = myOutputType;
 
         }
+   
 
-        public  void rbHeadSetiPhone_CheckedChanged(object sender, EventArgs e)
-        { }
-        public void rbHeadSetSamsung_CheckedChanged(object sender, EventArgs e)
-        { }
-        public void rbHeadSetEFStealth_CheckedChanged(object sender, EventArgs e)
-        { }
-        public void rbChargerCar_CheckedChanged(object sender, EventArgs e)
-        { }
-        public void rbChargerPowerbank_CheckedChanged(object sender, EventArgs e)
-        { }
-        public void rbChargerWall_CheckedChanged(object sender, EventArgs e)
-        { }
-
-        private void showInfob_Click(object sender, EventArgs e)
+        private void richTextSMSBox_TextChanged(object sender, EventArgs e)
         {
-            SetHeadSetType();
-            SetChargerType();
 
-            if (vCharger != null)
-                if (vHeadset != null)
-                {
-                    var mymobile = new SimCorpMobile(vHeadset, vCharger, vOutputType);
-                    mymobile.ToString();
-                }
 
-        }
-
-        private void SetChargerType()
-        {
-            if (this.rbChargerCar.Checked)
-            { vCharger = ChargerFactory.GetCharger(ChargerTypes.Car); }
-            else if (this.rbChargerPowerbank.Checked)
-            { vCharger = ChargerFactory.GetCharger(ChargerTypes.Powerbk); }
-            else if (this.rbChargerWall.Checked)
-            { vCharger = ChargerFactory.GetCharger(ChargerTypes.Wall); }
-        }
-
-        private void SetHeadSetType()
-        {
-            if (this.rbHeadSetiPhone.Checked)
-            {
-                vHeadset = HeadsetFactory.GetHeadSet(this.vOutputType, HeadsetTypes.iPhone);
-            }
-            else if (this.rbHeadSetSamsung.Checked)
-            { vHeadset = HeadsetFactory.GetHeadSet(this.vOutputType, HeadsetTypes.Samsung); }
-            else if (this.rbHeadSetEFStealth.Checked)
-            { vHeadset = HeadsetFactory.GetHeadSet(this.vOutputType, HeadsetTypes.EarForceStealth); }
         }
     }
 }

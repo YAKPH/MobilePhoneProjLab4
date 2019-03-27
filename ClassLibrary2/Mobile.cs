@@ -1,5 +1,6 @@
 ﻿using Common;
 using Headset;
+using PhoneLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace PhoneComponents
 {
     public abstract class Mobile
     {
+        public abstract SMSProvider SMSProvider { get; set; } 
 
         public abstract ScreenBase Screen { get; }
         public abstract BatteryBase Battery { get; }
