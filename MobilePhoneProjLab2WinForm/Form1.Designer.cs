@@ -36,6 +36,7 @@ namespace MobilePhoneProjLab2WinForm
             this.components = new System.ComponentModel.Container();
             this.richTextSMSBox = new System.Windows.Forms.RichTextBox();
             this.myTimer = new System.Windows.Forms.Timer(this.components);
+            this.comboBoxFormat = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // richTextSMSBox
@@ -53,11 +54,29 @@ namespace MobilePhoneProjLab2WinForm
             this.myTimer.Interval = 2000;
             this.myTimer.Tick += new System.EventHandler(this.myTimer_Tick);
             // 
+            // comboBoxFormat
+            // 
+            this.comboBoxFormat.FormattingEnabled = true;
+            this.comboBoxFormat.Items.AddRange(new object[] {
+            "None",
+            "Start with DateTime",
+            "End with DateTime",
+            "Uppercase",
+            "Lowercase",
+            "Short representation"});
+            this.comboBoxFormat.Location = new System.Drawing.Point(21, 12);
+            this.comboBoxFormat.Name = "comboBoxFormat";
+            this.comboBoxFormat.Size = new System.Drawing.Size(245, 21);
+            this.comboBoxFormat.TabIndex = 1;
+            this.comboBoxFormat.SelectedIndexChanged += new System.EventHandler(this.comboBoxFormat_SelectedIndexChanged);
+           
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(447, 449);
+            this.Controls.Add(this.comboBoxFormat);
             this.Controls.Add(this.richTextSMSBox);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -72,6 +91,7 @@ namespace MobilePhoneProjLab2WinForm
 
         private RichTextBox richTextSMSBox;
         private Timer myTimer;
+        private ComboBox comboBoxFormat;
     }
 }
 
