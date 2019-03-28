@@ -8,16 +8,18 @@ namespace PhoneLibrary
 {
     public class SMSProvider
     {
+        
         public delegate void SMSReceivedDelegate(string message);
         public event SMSReceivedDelegate SMSReceived;
 
+        public delegate string FormatDelegate(string message);
+        public event FormatDelegate Formatter;
+
+
         public void DoSMSReceived(string message)
         {
-            for (int i = 0; i < 10; i++)
-            {
-                RaiseSMSReceivedEvent(message+(i+1)+"\n");
-            }
-           
+            RaiseSMSReceivedEvent(message);
+  
         }
         private void RaiseSMSReceivedEvent (string message)
         {
@@ -26,6 +28,19 @@ namespace PhoneLibrary
             SMSReceivedDelegate handler = SMSReceived as SMSReceivedDelegate;
             if (handler != null) { handler(message); }
            
+        }
+
+
+        public string DoFormat(string message)
+        {
+            return RaiseFormatEvent(message);
+                                           
+        }
+        private string RaiseFormatEvent(string message)
+        {   string str = "";
+            FormatDelegate handler = Formatter as FormatDelegate;
+            if (handler != null) { str=handler(message); }
+            return str;
         }
 
     }

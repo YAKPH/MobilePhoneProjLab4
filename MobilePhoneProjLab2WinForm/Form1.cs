@@ -19,6 +19,7 @@ namespace MobilePhoneProjLab2WinForm
     {
         private IOutput vOutputType;
         private Mobile vMyMobile;
+        private int vSMSCounter;
 
 
         public Form1(IOutput myOutputType, Mobile mymobile)
@@ -38,21 +39,30 @@ namespace MobilePhoneProjLab2WinForm
         {
             vMyMobile = mymobile;
             vMyMobile.SMSProvider.SMSReceived += SMSProvider_SMSReceived;
-            this.vMyMobile.SMSProvider.DoSMSReceived("SMSProvider: SMS is received, no.");
-        
+            vMyMobile.SMSProvider.Formatter += SMSProvider_FormatterWithTime;
+            vSMSCounter = 0;
+        }
+
+        private string SMSProvider_FormatterWithTime(string message)
+        {
+            return $"[{DateTime.Now}]: {message} {Environment.NewLine}";
         }
 
         private void SMSProvider_SMSReceived(string message)
         {
             //Show message
+            message = this.vMyMobile.SMSProvider.DoFormat(message);
             this.richTextSMSBox.AppendText(message);
         }
 
-  
-        private void richTextSMSBox_TextChanged(object sender, EventArgs e)
+        private void myTimer_Tick(object sender, EventArgs e)
         {
-
-
+            vSMSCounter += 1;
+            this.vMyMobile.SMSProvider.DoSMSReceived($"message #{vSMSCounter} is received.");
         }
+
+        private void richTextSMSBox_TextChanged(object sender, EventArgs e)
+        { }
+
     }
 }

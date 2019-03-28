@@ -33,18 +33,25 @@ namespace MobilePhoneProjLab2WinForm
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.richTextSMSBox = new System.Windows.Forms.RichTextBox();
+            this.myTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // richTextSMSBox
             // 
             this.richTextSMSBox.Location = new System.Drawing.Point(21, 48);
             this.richTextSMSBox.Name = "richTextSMSBox";
-            this.richTextSMSBox.Size = new System.Drawing.Size(379, 321);
+            this.richTextSMSBox.Size = new System.Drawing.Size(414, 321);
             this.richTextSMSBox.TabIndex = 0;
             this.richTextSMSBox.Text = "";
             this.richTextSMSBox.TextChanged += new System.EventHandler(this.richTextSMSBox_TextChanged);
-            
+            // 
+            // myTimer
+            // 
+            this.myTimer.Enabled = true;
+            this.myTimer.Interval = 2000;
+            this.myTimer.Tick += new System.EventHandler(this.myTimer_Tick);
             // 
             // Form1
             // 
@@ -64,6 +71,7 @@ namespace MobilePhoneProjLab2WinForm
         #endregion
 
         private RichTextBox richTextSMSBox;
+        private Timer myTimer;
     }
 }
 
