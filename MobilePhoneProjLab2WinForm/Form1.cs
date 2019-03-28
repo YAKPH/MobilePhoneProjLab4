@@ -75,33 +75,33 @@ namespace MobilePhoneProjLab2WinForm
             }
             
         }
-        private string SMSProvider_FormatterNone(string message)
+        public static string SMSProvider_FormatterNone(string message)
         {
-            return $"{message} {Environment.NewLine}";
+            return $"{message}{Environment.NewLine}";
         }
 
-        private string SMSProvider_FormatterWithTime(string message)
+        public static string SMSProvider_FormatterWithTime(string message)
         {
-            return $"[{DateTime.Now}]: {message} {Environment.NewLine}";
+            return $"[{DateTime.Now}]: {message}{Environment.NewLine}";
         }
 
-        private string SMSProvider_FormatterWithTimeEnd(string message)
+        public static string SMSProvider_FormatterWithTimeEnd(string message)
         {
-            return $"{message} [{DateTime.Now}] {Environment.NewLine}";
+            return $"{message} [{DateTime.Now}]{Environment.NewLine}";
         }
-        private string SMSProvider_FormatterUpper(string message)
+        public static string SMSProvider_FormatterUpper(string message)
         {
-            return $"{message.ToUpper()} {Environment.NewLine}";
+            return $"{message.ToUpper()}{Environment.NewLine}";
         }
-        private string SMSProvider_FormatterLower(string message)
+        public static string SMSProvider_FormatterLower(string message)
         { 
-            return $"{message.ToLower() } {Environment.NewLine}";
+            return $"{message.ToLower()}{Environment.NewLine}";
         }
-        private string SMSProvider_FormatterShort(string message)
+        public static string SMSProvider_FormatterShort(string message)
         {
             string formattedStr = message.Substring(0, message.IndexOf(" is"));
             formattedStr+=".";
-            return $"{formattedStr} {Environment.NewLine}";
+            return $"{formattedStr}{Environment.NewLine}";
         }
 
     }
