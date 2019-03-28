@@ -22,15 +22,10 @@ namespace MobilePhoneProjLab2WinForm
 
 
         public Form1(IOutput myOutputType, Mobile mymobile)
-        {
+        {    
             InitializeComponent();
             InitializeComponentOutput(myOutputType);
             InitializeComponentMobile(mymobile);
-        }
-
-        private void InitializeComponentMobile(Mobile mymobile)
-        {
-            vMyMobile = mymobile;
         }
 
         private void InitializeComponentOutput(IOutput myOutputType)
@@ -38,8 +33,22 @@ namespace MobilePhoneProjLab2WinForm
             vOutputType = myOutputType;
 
         }
-   
 
+        private void InitializeComponentMobile(Mobile mymobile)
+        {
+            vMyMobile = mymobile;
+            vMyMobile.SMSProvider.SMSReceived += SMSProvider_SMSReceived;
+            this.vMyMobile.SMSProvider.DoSMSReceived("SMSProvider: SMS is received, no.");
+        
+        }
+
+        private void SMSProvider_SMSReceived(string message)
+        {
+            //Show message
+            this.richTextSMSBox.AppendText(message);
+        }
+
+  
         private void richTextSMSBox_TextChanged(object sender, EventArgs e)
         {
 

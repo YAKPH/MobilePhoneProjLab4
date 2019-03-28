@@ -11,13 +11,22 @@ namespace PhoneLibrary
         public delegate void SMSReceivedDelegate(string message);
         public event SMSReceivedDelegate SMSReceived;
 
+        public void DoSMSReceived(string message)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                RaiseSMSReceivedEvent(message+(i+1)+"\n");
+            }
+           
+        }
         private void RaiseSMSReceivedEvent (string message)
         {
-            SMSReceived?.Invoke(message);
-            /*
-            var handler = SMSReceived;
+            //(SMSReceived as SMSReceivedDelegate)?.Invoke(message);
+          
+            SMSReceivedDelegate handler = SMSReceived as SMSReceivedDelegate;
             if (handler != null) { handler(message); }
-            */
+           
         }
+
     }
 }

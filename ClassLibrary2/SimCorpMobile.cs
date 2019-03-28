@@ -25,7 +25,7 @@ namespace PhoneComponents
 
         public override SMSProvider SMSProvider
         { get { return vSMSProvider; }
-            set { vSMSProvider =value;} }
+            set { vSMSProvider = value;} }
 
         public override ScreenBase Screen { get { return vScreen; } }
         public override BatteryBase Battery { get { return vBattery; } }
@@ -65,6 +65,8 @@ namespace PhoneComponents
             vOutput = output;
             vHeadSet = headset;
             vCharger = charger;
+
+            vSMSProvider = new SMSProvider();
         }
 
     }

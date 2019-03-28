@@ -44,6 +44,7 @@ namespace MobilePhoneProjLab2WinForm
             this.richTextSMSBox.TabIndex = 0;
             this.richTextSMSBox.Text = "";
             this.richTextSMSBox.TextChanged += new System.EventHandler(this.richTextSMSBox_TextChanged);
+            
             // 
             // Form1
             // 

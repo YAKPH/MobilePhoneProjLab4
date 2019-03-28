@@ -24,8 +24,8 @@ namespace PhoneComponents
 
         public override string ToString()
         {
-            Headset.Play();
-
+            /*Headset.Play();
+           
             double time = Charger.CalculateChargingTime(Battery.vBatteryCapacityMAh);
             Output.WriteLine($"Charging time for this battery and charger is {time} hours.");
 
@@ -36,7 +36,7 @@ namespace PhoneComponents
             phoneParams += $"Camera Parameters: {Camera.ToString()}\n";
             phoneParams += $"Sim Card: {Simcard.ToString()}\n";
             Output.WriteLine(phoneParams);
-           
+           */
             return "";
         }
     }
