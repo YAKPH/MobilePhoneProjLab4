@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestEvenRaised.cs" />
     <Compile Include="TestFormat.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +65,10 @@
     <ProjectReference Include="..\ClassLibrary1\Common.csproj">
       <Project>{62aa01b5-3c8e-4751-a578-b07d25e31247}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClassLibrary2\PhoneComponents.csproj">
+      <Project>{d1c13831-c17d-457a-9190-cc39e58b2194}</Project>
+      <Name>PhoneComponents</Name>
     </ProjectReference>
     <ProjectReference Include="..\MobilePhoneProjLab2WinForm\MobilePhoneProjLab3WinForm.csproj">
       <Project>{4651820d-3e37-4c7e-a15c-2afe8e65c577}</Project>
