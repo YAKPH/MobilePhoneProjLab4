@@ -20,6 +20,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Output", "Output\Output.csproj", "{8E0AD61F-7096-4477-973B-6375C194F92B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimcorpPhoneWinForm3", "SimcorpPhoneWinForm3", "{1EF23F1C-7E5B-4798-B832-39339046B9B4}"
+	ProjectSection(SolutionItems) = preProject
+		ClassLibrary2\SMSProvider.cs = ClassLibrary2\SMSProvider.cs
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobilePhoneProjLab3WinForm", "MobilePhoneProjLab2WinForm\MobilePhoneProjLab3WinForm.csproj", "{4651820D-3E37-4C7E-A15C-2AFE8E65C577}"
 EndProject

@@ -15,10 +15,8 @@ namespace Test
             string actual="";
 
             SMSProvider smsProv = new SMSProvider();
-            smsProv.SMSReceived += delegate (string str)
-            {
-                actual = str.ToString();
-            };
+            smsProv.SMSReceived += (string str) => actual = str.ToString();
+   
             smsProv.DoSMSReceived("Some message received");
 
             Assert.AreEqual(expected, actual);
