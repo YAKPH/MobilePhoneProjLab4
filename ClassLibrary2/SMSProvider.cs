@@ -30,7 +30,6 @@ namespace PhoneLibrary
            
         }
 
-
         public string DoFormat(string message)
         {
             return RaiseFormatEvent(message);
