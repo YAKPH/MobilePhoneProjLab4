@@ -26,7 +26,6 @@ namespace PhoneLibrary
           
             SMSReceivedDelegate handler = SMSReceived as SMSReceivedDelegate;
             if (handler != null) { handler(message); }
-           
         }
 
         public string DoFormat(string message)
