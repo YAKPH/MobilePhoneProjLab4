@@ -19,7 +19,6 @@ namespace PhoneLibrary
         public void DoSMSReceived(string message)
         {
             RaiseSMSReceivedEvent(message);
-  
         }
         private void RaiseSMSReceivedEvent (string message)
         {
