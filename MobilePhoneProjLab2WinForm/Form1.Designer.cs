@@ -37,6 +37,7 @@ namespace MobilePhoneProjLab2WinForm
             this.richTextSMSBox = new System.Windows.Forms.RichTextBox();
             this.myTimer = new System.Windows.Forms.Timer(this.components);
             this.comboBoxFormat = new System.Windows.Forms.ComboBox();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // richTextSMSBox
@@ -62,20 +63,27 @@ namespace MobilePhoneProjLab2WinForm
             "Start with DateTime",
             "End with DateTime",
             "Uppercase",
-            "Lowercase",
-            "Short representation"});
+            "Lowercase"});
             this.comboBoxFormat.Location = new System.Drawing.Point(21, 12);
             this.comboBoxFormat.Name = "comboBoxFormat";
             this.comboBoxFormat.Size = new System.Drawing.Size(245, 21);
             this.comboBoxFormat.TabIndex = 1;
             this.comboBoxFormat.SelectedIndexChanged += new System.EventHandler(this.comboBoxFormat_SelectedIndexChanged);
-           
+            // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(312, 13);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(121, 97);
+            this.listView1.TabIndex = 2;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(447, 449);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.comboBoxFormat);
             this.Controls.Add(this.richTextSMSBox);
             this.MaximizeBox = false;
@@ -92,6 +100,7 @@ namespace MobilePhoneProjLab2WinForm
         private RichTextBox richTextSMSBox;
         private Timer myTimer;
         private ComboBox comboBoxFormat;
+        private ListView listView1;
     }
 }
 

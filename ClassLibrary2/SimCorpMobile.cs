@@ -21,11 +21,17 @@ namespace PhoneComponents
         private readonly ICharger vCharger;
         private readonly IOutput vOutput;
         private  SMSProvider vSMSProvider;
-
+        private StorageMessages vStorageMessages;
 
         public override SMSProvider SMSProvider
         { get { return vSMSProvider; }
             set { vSMSProvider = value;} }
+
+        public override StorageMessages StorageMessages
+        {
+            get { return vStorageMessages; }
+            set { vStorageMessages = value; }
+        }
 
         public override ScreenBase Screen { get { return vScreen; } }
         public override BatteryBase Battery { get { return vBattery; } }
@@ -67,6 +73,10 @@ namespace PhoneComponents
             vCharger = charger;
 
             vSMSProvider = new SMSProvider();
+            vStorageMessages = new StorageMessages
+            {
+                ListMessages = new List<MyMessage>()
+            };
         }
 
     }

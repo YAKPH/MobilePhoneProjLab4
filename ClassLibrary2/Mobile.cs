@@ -11,7 +11,8 @@ namespace PhoneComponents
 {
     public abstract class Mobile
     {
-        public abstract SMSProvider SMSProvider { get; set; } 
+        public abstract SMSProvider SMSProvider { get; set; }
+        public abstract StorageMessages StorageMessages {get; set;}
 
         public abstract ScreenBase Screen { get; }
         public abstract BatteryBase Battery { get; }

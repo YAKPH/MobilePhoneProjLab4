@@ -2,6 +2,7 @@
 using Common;
 using Headset;
 using PhoneComponents;
+using PhoneLibrary;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,14 +21,14 @@ namespace MobilePhoneProjLab2WinForm
         private IOutput vOutputType;
         private Mobile vMyMobile;
         private int vSMSCounter;
-
+ 
 
         public Form1(IOutput myOutputType, Mobile mymobile)
         {
             InitializeComponent();
             InitializeComponentOutput(myOutputType);
             InitializeComponentMobile(mymobile);
-            this.comboBoxFormat.SelectedIndex = 0;  //set default value for Format = "None"
+            this.comboBoxFormat.SelectedIndex = 0;  //set default value for Format = "None"    
         }
 
         private void InitializeComponentOutput(IOutput myOutputType)
@@ -39,22 +40,44 @@ namespace MobilePhoneProjLab2WinForm
         private void InitializeComponentMobile(Mobile mymobile)
         {
             vMyMobile = mymobile;
-            vMyMobile.SMSProvider.SMSReceived += SMSProvider_SMSReceived;
+            vMyMobile.SMSProvider.SMSReceived += SMSProvider_SMSReceived; //add listener
             vSMSCounter = 0;
         }
 
 
-        private void SMSProvider_SMSReceived(string message)
+        private void SMSProvider_SMSReceived(MyMessage message)   //implement listener
         {
             //Show message
-            message = this.vMyMobile.SMSProvider.DoFormat(message);
-            this.richTextSMSBox.AppendText(message);
+            this.vMyMobile.StorageMessages.Add(message);
+            ShowMessage(this.vMyMobile.StorageMessages.ListMessages);
+         //   message = this.vMyMobile.SMSProvider.DoFormat(message);
+          //  this.richTextSMSBox.AppendText(message.Text+"\n");
+            
+        }
+
+        private void ShowMessage(List<MyMessage> listMessages)
+        {
+            this.richTextSMSBox.Clear();
+            foreach (MyMessage msg in listMessages)
+            {
+                var str =this.vMyMobile.SMSProvider.DoFormat(msg);
+                this.richTextSMSBox.AppendText(str + "\n");
+            }
         }
 
         private void myTimer_Tick(object sender, EventArgs e)
         {
             vSMSCounter += 1;
-            this.vMyMobile.SMSProvider.DoSMSReceived($"Message #{vSMSCounter} is received.");
+
+            MyMessage vNewSubscr1Message = new MyMessage()
+            {   Name = "Yuliia",
+                Surname = "Pykhnivska",
+                PhoneNo = "+380955786280",
+                ReceivingTime = DateTime.Now,
+                Text = $"Message #{vSMSCounter} is received."
+            };
+
+            this.vMyMobile.SMSProvider.DoSMSReceived(vNewSubscr1Message);
         }
 
         private void richTextSMSBox_TextChanged(object sender, EventArgs e)
@@ -70,38 +93,32 @@ namespace MobilePhoneProjLab2WinForm
               case "End with DateTime": { vMyMobile.SMSProvider.Formatter += SMSProvider_FormatterWithTimeEnd;  break; }
               case "Uppercase": { vMyMobile.SMSProvider.Formatter += SMSProvider_FormatterUpper; break; }
               case "Lowercase": { vMyMobile.SMSProvider.Formatter += SMSProvider_FormatterLower;  break; }
-              case "Short representation": { vMyMobile.SMSProvider.Formatter += SMSProvider_FormatterShort;  break; }
 
             }
             
         }
-        public static string SMSProvider_FormatterNone(string message)
+        public static string SMSProvider_FormatterNone(MyMessage message)
         {
-            return $"{message}{Environment.NewLine}";
+            return $"{message.Text}";
         }
 
-        public static string SMSProvider_FormatterWithTime(string message)
+        public static string SMSProvider_FormatterWithTime(MyMessage message)
         {
-            return $"[{DateTime.Now}]: {message}{Environment.NewLine}";
+            return $"[{message.ReceivingTime}]: {message.Text}";
+
         }
 
-        public static string SMSProvider_FormatterWithTimeEnd(string message)
+        public static string SMSProvider_FormatterWithTimeEnd(MyMessage message)
         {
-            return $"{message} [{DateTime.Now}]{Environment.NewLine}";
+           return $"{message.Text} [{message.ReceivingTime}]";
         }
-        public static string SMSProvider_FormatterUpper(string message)
+        public static string SMSProvider_FormatterUpper(MyMessage message)
         {
-            return $"{message.ToUpper()}{Environment.NewLine}";
+            return $"{message.Text.ToUpper()}";
         }
-        public static string SMSProvider_FormatterLower(string message)
-        { 
-            return $"{message.ToLower()}{Environment.NewLine}";
-        }
-        public static string SMSProvider_FormatterShort(string message)
+        public static string SMSProvider_FormatterLower(MyMessage message)
         {
-            string formattedStr = message.Substring(0, message.IndexOf(" is"));
-            formattedStr+=".";
-            return $"{formattedStr}{Environment.NewLine}";
+            return $"{message.Text.ToLower()}";
         }
 
     }
