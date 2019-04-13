@@ -57,11 +57,13 @@ namespace MobilePhoneProjLab2WinForm
 
         private void ShowMessage(List<MyMessage> listMessages)
         {
-            this.richTextSMSBox.Clear();
+            this.listViewSms.Items.Clear();
             foreach (MyMessage msg in listMessages)
             {
-                var str =this.vMyMobile.SMSProvider.DoFormat(msg);
-                this.richTextSMSBox.AppendText(str + "\n");
+                var formattedTxt =this.vMyMobile.SMSProvider.DoFormat(msg);
+                var row = new string[] { msg.Name, formattedTxt };
+                this.listViewSms.Items.Add(new ListViewItem(row));
+                
             }
         }
 
@@ -72,12 +74,22 @@ namespace MobilePhoneProjLab2WinForm
             MyMessage vNewSubscr1Message = new MyMessage()
             {   Name = "Yuliia",
                 Surname = "Pykhnivska",
-                PhoneNo = "+380955786280",
+                PhoneNo = "+380957777777",
                 ReceivingTime = DateTime.Now,
-                Text = $"Message #{vSMSCounter} is received."
+                Text = $"Message #{vSMSCounter} is received"
+            };
+
+            MyMessage vNewSubscr2Message = new MyMessage()
+            {
+                Name = "Sviatoslav",
+                Surname = "Pykhnivskyi",
+                PhoneNo = "+380955555555",
+                ReceivingTime = DateTime.Now,
+                Text = $"Message #{vSMSCounter} is received"
             };
 
             this.vMyMobile.SMSProvider.DoSMSReceived(vNewSubscr1Message);
+            this.vMyMobile.SMSProvider.DoSMSReceived(vNewSubscr2Message);
         }
 
         private void richTextSMSBox_TextChanged(object sender, EventArgs e)
@@ -93,7 +105,6 @@ namespace MobilePhoneProjLab2WinForm
               case "End with DateTime": { vMyMobile.SMSProvider.Formatter += SMSProvider_FormatterWithTimeEnd;  break; }
               case "Uppercase": { vMyMobile.SMSProvider.Formatter += SMSProvider_FormatterUpper; break; }
               case "Lowercase": { vMyMobile.SMSProvider.Formatter += SMSProvider_FormatterLower;  break; }
-
             }
             
         }
@@ -121,5 +132,9 @@ namespace MobilePhoneProjLab2WinForm
             return $"{message.Text.ToLower()}";
         }
 
+        private void listViewSms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 } 

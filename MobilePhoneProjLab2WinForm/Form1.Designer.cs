@@ -34,20 +34,12 @@ namespace MobilePhoneProjLab2WinForm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.richTextSMSBox = new System.Windows.Forms.RichTextBox();
             this.myTimer = new System.Windows.Forms.Timer(this.components);
             this.comboBoxFormat = new System.Windows.Forms.ComboBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewSms = new System.Windows.Forms.ListView();
+            this.From = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.SmsText = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
-            // 
-            // richTextSMSBox
-            // 
-            this.richTextSMSBox.Location = new System.Drawing.Point(21, 48);
-            this.richTextSMSBox.Name = "richTextSMSBox";
-            this.richTextSMSBox.Size = new System.Drawing.Size(414, 321);
-            this.richTextSMSBox.TabIndex = 0;
-            this.richTextSMSBox.Text = "";
-            this.richTextSMSBox.TextChanged += new System.EventHandler(this.richTextSMSBox_TextChanged);
             // 
             // myTimer
             // 
@@ -70,37 +62,52 @@ namespace MobilePhoneProjLab2WinForm
             this.comboBoxFormat.TabIndex = 1;
             this.comboBoxFormat.SelectedIndexChanged += new System.EventHandler(this.comboBoxFormat_SelectedIndexChanged);
             // 
-            // listView1
+            // listViewSms
             // 
-            this.listView1.Location = new System.Drawing.Point(312, 13);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(121, 97);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listViewSms.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.From,
+            this.SmsText});
+            this.listViewSms.FullRowSelect = true;
+            this.listViewSms.GridLines = true;
+            this.listViewSms.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listViewSms.Location = new System.Drawing.Point(21, 39);
+            this.listViewSms.Name = "listViewSms";
+            this.listViewSms.Size = new System.Drawing.Size(358, 321);
+            this.listViewSms.TabIndex = 2;
+            this.listViewSms.UseCompatibleStateImageBehavior = false;
+            this.listViewSms.View = System.Windows.Forms.View.Details;
+            this.listViewSms.SelectedIndexChanged += new System.EventHandler(this.listViewSms_SelectedIndexChanged);
+            // 
+            // From
+            // 
+            this.From.Text = "From";
+            // 
+            // SmsText
+            // 
+            this.SmsText.Text = "Text";
+            this.SmsText.Width = 300;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 449);
-            this.Controls.Add(this.listView1);
+            this.ClientSize = new System.Drawing.Size(582, 449);
+            this.Controls.Add(this.listViewSms);
             this.Controls.Add(this.comboBoxFormat);
-            this.Controls.Add(this.richTextSMSBox);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
             this.ResumeLayout(false);
 
         }
 
 
         #endregion
-
-        private RichTextBox richTextSMSBox;
         private Timer myTimer;
         private ComboBox comboBoxFormat;
-        private ListView listView1;
+        private ListView listViewSms;
+        private ColumnHeader From;
+        private ColumnHeader SmsText;
     }
 }
 
