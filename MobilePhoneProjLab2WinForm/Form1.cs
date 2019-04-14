@@ -50,20 +50,22 @@ namespace MobilePhoneProjLab2WinForm
             //Show message
             this.vMyMobile.StorageMessages.Add(message);
             ShowMessage(this.vMyMobile.StorageMessages.ListMessages);
-         //   message = this.vMyMobile.SMSProvider.DoFormat(message);
-          //  this.richTextSMSBox.AppendText(message.Text+"\n");
             
         }
 
         private void ShowMessage(List<MyMessage> listMessages)
         {
-            this.listViewSms.Items.Clear();
+            listViewSms.Items.Clear();
+           // comboBoxUser.Items.Clear();
             foreach (MyMessage msg in listMessages)
             {
                 var formattedTxt =this.vMyMobile.SMSProvider.DoFormat(msg);
-                var row = new string[] { msg.Name, formattedTxt };
-                this.listViewSms.Items.Add(new ListViewItem(row));
-                
+                var row = new string[] { msg.User, formattedTxt };
+                listViewSms.Items.Add(new ListViewItem(row));
+
+                if (!comboBoxUser.Items.Contains(msg.User))
+                { comboBoxUser.Items.Add(msg.User); }
+
             }
         }
 
@@ -72,24 +74,33 @@ namespace MobilePhoneProjLab2WinForm
             vSMSCounter += 1;
 
             MyMessage vNewSubscr1Message = new MyMessage()
-            {   Name = "Yuliia",
-                Surname = "Pykhnivska",
+            {   User = "Yuliia",
                 PhoneNo = "+380957777777",
                 ReceivingTime = DateTime.Now,
                 Text = $"Message #{vSMSCounter} is received"
             };
 
+            vSMSCounter += 1;
             MyMessage vNewSubscr2Message = new MyMessage()
             {
-                Name = "Sviatoslav",
-                Surname = "Pykhnivskyi",
+                User = "Sviatoslav",
                 PhoneNo = "+380955555555",
+                ReceivingTime = DateTime.Now,
+                Text = $"Message #{vSMSCounter} is received"
+            };
+
+            vSMSCounter += 1;
+            MyMessage vNewSubscr3Message = new MyMessage()
+            {
+                User = "Roman",
+                PhoneNo = "+380955555554",
                 ReceivingTime = DateTime.Now,
                 Text = $"Message #{vSMSCounter} is received"
             };
 
             this.vMyMobile.SMSProvider.DoSMSReceived(vNewSubscr1Message);
             this.vMyMobile.SMSProvider.DoSMSReceived(vNewSubscr2Message);
+            this.vMyMobile.SMSProvider.DoSMSReceived(vNewSubscr3Message);
         }
 
         private void richTextSMSBox_TextChanged(object sender, EventArgs e)
@@ -116,7 +127,6 @@ namespace MobilePhoneProjLab2WinForm
         public static string SMSProvider_FormatterWithTime(MyMessage message)
         {
             return $"[{message.ReceivingTime}]: {message.Text}";
-
         }
 
         public static string SMSProvider_FormatterWithTimeEnd(MyMessage message)
@@ -135,6 +145,11 @@ namespace MobilePhoneProjLab2WinForm
         private void listViewSms_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBoxUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           //this.vMyMobile.StorageMessages.ListMessages.
         }
     }
 } 
