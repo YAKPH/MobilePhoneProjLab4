@@ -25,7 +25,7 @@ namespace MobilePhoneProjLab2WinForm
             IOutput myOutputType = new WinFormOutput();
             Mobile mymobile =InstantiateSimCorpMobile(myOutputType);
 
-            Application.Run(new Form1(myOutputType,mymobile));
+            Application.Run(new FormMessageFiltering(myOutputType,mymobile));
 
         }
 

@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace MobilePhoneProjLab2WinForm
 {
-    partial class Form1
+    partial class FormMessageFiltering
     {
         /// <summary>
         /// Required designer variable.
@@ -46,10 +46,10 @@ namespace MobilePhoneProjLab2WinForm
             this.labelMessages = new System.Windows.Forms.Label();
             this.labelFindTxt = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimeTo = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeFrom = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,12 +103,11 @@ namespace MobilePhoneProjLab2WinForm
             // 
             this.comboBoxUser.AllowDrop = true;
             this.comboBoxUser.FormattingEnabled = true;
-            this.comboBoxUser.Items.AddRange(new object[] {
-            "All"});
             this.comboBoxUser.Location = new System.Drawing.Point(13, 47);
             this.comboBoxUser.Name = "comboBoxUser";
             this.comboBoxUser.Size = new System.Drawing.Size(121, 21);
             this.comboBoxUser.TabIndex = 3;
+            this.comboBoxUser.UseWaitCursor = true;
             this.comboBoxUser.SelectedIndexChanged += new System.EventHandler(this.comboBoxUser_SelectedIndexChanged);
             // 
             // labelUser
@@ -158,8 +157,8 @@ namespace MobilePhoneProjLab2WinForm
             // 
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.dateTimeTo);
+            this.groupBox1.Controls.Add(this.dateTimeFrom);
             this.groupBox1.Controls.Add(this.labelFindTxt);
             this.groupBox1.Controls.Add(this.textBoxFindTxt);
             this.groupBox1.Controls.Add(this.labelUser);
@@ -171,21 +170,14 @@ namespace MobilePhoneProjLab2WinForm
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filters";
             // 
-            // dateTimePicker1
+            // label2
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(13, 155);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(92, 20);
-            this.dateTimePicker1.TabIndex = 9;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(125, 155);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(96, 20);
-            this.dateTimePicker2.TabIndex = 10;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(122, 139);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "To Date:";
             // 
             // label1
             // 
@@ -196,19 +188,27 @@ namespace MobilePhoneProjLab2WinForm
             this.label1.TabIndex = 11;
             this.label1.Text = "From Date:";
             // 
-            // label2
+            // dateTimeTo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(122, 139);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "To Date:";
+            this.dateTimeTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeTo.Location = new System.Drawing.Point(125, 155);
+            this.dateTimeTo.Name = "dateTimeTo";
+            this.dateTimeTo.Size = new System.Drawing.Size(96, 20);
+            this.dateTimeTo.TabIndex = 10;
             // 
-            // Form1
+            // dateTimeFrom
+            // 
+            this.dateTimeFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeFrom.Location = new System.Drawing.Point(13, 155);
+            this.dateTimeFrom.Name = "dateTimeFrom";
+            this.dateTimeFrom.Size = new System.Drawing.Size(92, 20);
+            this.dateTimeFrom.TabIndex = 9;
+            // 
+            // FormMessageFiltering
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(621, 449);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelMessages);
@@ -217,7 +217,8 @@ namespace MobilePhoneProjLab2WinForm
             this.Controls.Add(this.comboBoxFormat);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form1";
+            this.Name = "FormMessageFiltering";
+            this.Text = "Message Filtering";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -241,8 +242,8 @@ namespace MobilePhoneProjLab2WinForm
         private GroupBox groupBox1;
         private Label label2;
         private Label label1;
-        private DateTimePicker dateTimePicker2;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimeTo;
+        private DateTimePicker dateTimeFrom;
     }
 }
 

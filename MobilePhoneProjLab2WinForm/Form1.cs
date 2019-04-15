@@ -13,17 +13,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Headset.HeadsetFactory;
+using static System.Windows.Forms.CheckedListBox;
 
 namespace MobilePhoneProjLab2WinForm
 {
-    public partial class Form1 : Form
+    public partial class FormMessageFiltering : Form
     {
         private IOutput vOutputType;
         private Mobile vMyMobile;
         private int vSMSCounter;
- 
+        private string[] vFilterUsers;
 
-        public Form1(IOutput myOutputType, Mobile mymobile)
+
+        public FormMessageFiltering(IOutput myOutputType, Mobile mymobile)
         {
             InitializeComponent();
             InitializeComponentOutput(myOutputType);
@@ -56,17 +58,32 @@ namespace MobilePhoneProjLab2WinForm
         private void ShowMessage(List<MyMessage> listMessages)
         {
             listViewSms.Items.Clear();
-           // comboBoxUser.Items.Clear();
+
+            //display available users
             foreach (MyMessage msg in listMessages)
             {
-                var formattedTxt =this.vMyMobile.SMSProvider.DoFormat(msg);
-                var row = new string[] { msg.User, formattedTxt };
-                listViewSms.Items.Add(new ListViewItem(row));
-
                 if (!comboBoxUser.Items.Contains(msg.User))
                 { comboBoxUser.Items.Add(msg.User); }
-
+            
             }
+
+            //build query
+
+            var query = from msg in listMessages
+                        where (msg.User == (string)comboBoxUser.SelectedItem || comboBoxUser.SelectedItem==null)
+                        where msg.ReceivingTime.Date <= dateTimeTo.Value.Date
+                        where msg.ReceivingTime.Date >= dateTimeFrom.Value.Date
+                        select msg;
+
+            //display message
+            foreach (MyMessage msg in query)
+            {
+                var formattedTxt = this.vMyMobile.SMSProvider.DoFormat(msg);
+                var row = new string[] { msg.User, formattedTxt };
+                listViewSms.Items.Add(new ListViewItem(row));
+            }
+
+
         }
 
         private void myTimer_Tick(object sender, EventArgs e)
@@ -149,7 +166,8 @@ namespace MobilePhoneProjLab2WinForm
 
         private void comboBoxUser_SelectedIndexChanged(object sender, EventArgs e)
         {
-           //this.vMyMobile.StorageMessages.ListMessages.
+            
+           
         }
     }
 } 
