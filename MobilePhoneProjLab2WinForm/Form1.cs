@@ -85,12 +85,13 @@ namespace MobilePhoneProjLab2WinForm
 
         public static IEnumerable<MyMessage> FilterMessages(List<MyMessage> listMessages, string filterUser, string filterText, DateTime toDate, DateTime fromDate)
         {
-            return from msg in listMessages
+             return from msg in listMessages
                    where (msg.User == filterUser || filterUser == null)
                    where (msg.Text.Contains(filterText) || filterText =="")
                    where msg.ReceivingTime.Date <= toDate
                    where msg.ReceivingTime.Date >= fromDate
                    select msg;
+
         }
 
         private void UpdateUserFilter(List<MyMessage> listMessages)
