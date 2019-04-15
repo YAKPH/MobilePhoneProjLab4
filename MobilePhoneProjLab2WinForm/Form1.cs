@@ -39,12 +39,12 @@ namespace MobilePhoneProjLab2WinForm
         private void InitializeComponentMobile(Mobile mymobile)
         {
             vMyMobile = mymobile;
-            vMyMobile.SMSProvider.SMSReceived += SMSProvider_SMSReceived; 
+            vMyMobile.SMSProvider.SMSReceived += SMSProvider_SMSReceived;
             vSMSCounter = 0;
         }
 
 
-        private void SMSProvider_SMSReceived(MyMessage message)   
+        private void SMSProvider_SMSReceived(MyMessage message)
         {
             //add Message into Mobile Storage
             this.vMyMobile.StorageMessages.Add(message);
@@ -54,7 +54,7 @@ namespace MobilePhoneProjLab2WinForm
 
             //Show Messsages in the Mobile Storage
             ShowMessage(this.vMyMobile.StorageMessages.ListMessages);
-            
+
         }
 
         private void ShowMessage(List<MyMessage> listMessages)
@@ -76,8 +76,12 @@ namespace MobilePhoneProjLab2WinForm
 
         private IEnumerable<MyMessage> FilterMessages(List<MyMessage> listMessages)
         {
+            var filterUser = comboBoxUser.SelectedItem;
+            var filterText = textBoxFindTxt.Text;
+
             return from msg in listMessages
-                   where (msg.User == (string)comboBoxUser.SelectedItem || comboBoxUser.SelectedItem == null)
+                   where (msg.User == (string)filterUser || filterUser == null)
+                   where (msg.Text.Contains(filterText) || filterText =="")
                    where msg.ReceivingTime.Date <= dateTimeTo.Value.Date
                    where msg.ReceivingTime.Date >= dateTimeFrom.Value.Date
                    select msg;
@@ -101,7 +105,7 @@ namespace MobilePhoneProjLab2WinForm
             {   User = "Yuliia",
                 PhoneNo = "+380957777777",
                 ReceivingTime = DateTime.Now,
-                Text = $"Message #{vSMSCounter} is received"
+                Text = $"Message #{vSMSCounter} is delivered"
             };
 
             vSMSCounter += 1;
@@ -119,7 +123,7 @@ namespace MobilePhoneProjLab2WinForm
                 User = "Roman",
                 PhoneNo = "+380955555554",
                 ReceivingTime = DateTime.Now,
-                Text = $"Message #{vSMSCounter} is received"
+                Text = $"Message #{vSMSCounter} is provided"
             };
 
             this.vMyMobile.SMSProvider.DoSMSReceived(vNewSubscr1Message);
