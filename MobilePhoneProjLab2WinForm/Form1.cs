@@ -22,8 +22,6 @@ namespace MobilePhoneProjLab2WinForm
         private IOutput vOutputType;
         private Mobile vMyMobile;
         private int vSMSCounter;
-        private string[] vFilterUsers;
-
 
         public FormMessageFiltering(IOutput myOutputType, Mobile mymobile)
         {
@@ -36,21 +34,25 @@ namespace MobilePhoneProjLab2WinForm
         private void InitializeComponentOutput(IOutput myOutputType)
         {
             vOutputType = myOutputType;
-
         }
 
         private void InitializeComponentMobile(Mobile mymobile)
         {
             vMyMobile = mymobile;
-            vMyMobile.SMSProvider.SMSReceived += SMSProvider_SMSReceived; //add listener
+            vMyMobile.SMSProvider.SMSReceived += SMSProvider_SMSReceived; 
             vSMSCounter = 0;
         }
 
 
-        private void SMSProvider_SMSReceived(MyMessage message)   //implement listener
+        private void SMSProvider_SMSReceived(MyMessage message)   
         {
-            //Show message
+            //add Message into Mobile Storage
             this.vMyMobile.StorageMessages.Add(message);
+
+            // update User filter and display available users
+            UpdateUserFilter(this.vMyMobile.StorageMessages.ListMessages);
+
+            //Show Messsages in the Mobile Storage
             ShowMessage(this.vMyMobile.StorageMessages.ListMessages);
             
         }
@@ -59,31 +61,36 @@ namespace MobilePhoneProjLab2WinForm
         {
             listViewSms.Items.Clear();
 
-            //display available users
+            //build query for filtering
+            IEnumerable<MyMessage> filterQuery = FilterMessages(listMessages);
+
+            //display (filtered) messages
+            foreach (MyMessage msg in filterQuery)
+            {
+                var formattedTxt = this.vMyMobile.SMSProvider.DoFormat(msg);
+                var row = new string[] { msg.User, formattedTxt, msg.PhoneNo };
+                listViewSms.Items.Add(new ListViewItem(row));
+            }
+
+        }
+
+        private IEnumerable<MyMessage> FilterMessages(List<MyMessage> listMessages)
+        {
+            return from msg in listMessages
+                   where (msg.User == (string)comboBoxUser.SelectedItem || comboBoxUser.SelectedItem == null)
+                   where msg.ReceivingTime.Date <= dateTimeTo.Value.Date
+                   where msg.ReceivingTime.Date >= dateTimeFrom.Value.Date
+                   select msg;
+        }
+
+        private void UpdateUserFilter(List<MyMessage> listMessages)
+        {
             foreach (MyMessage msg in listMessages)
             {
                 if (!comboBoxUser.Items.Contains(msg.User))
                 { comboBoxUser.Items.Add(msg.User); }
-            
+
             }
-
-            //build query
-
-            var query = from msg in listMessages
-                        where (msg.User == (string)comboBoxUser.SelectedItem || comboBoxUser.SelectedItem==null)
-                        where msg.ReceivingTime.Date <= dateTimeTo.Value.Date
-                        where msg.ReceivingTime.Date >= dateTimeFrom.Value.Date
-                        select msg;
-
-            //display message
-            foreach (MyMessage msg in query)
-            {
-                var formattedTxt = this.vMyMobile.SMSProvider.DoFormat(msg);
-                var row = new string[] { msg.User, formattedTxt };
-                listViewSms.Items.Add(new ListViewItem(row));
-            }
-
-
         }
 
         private void myTimer_Tick(object sender, EventArgs e)
@@ -150,6 +157,7 @@ namespace MobilePhoneProjLab2WinForm
         {
            return $"{message.Text} [{message.ReceivingTime}]";
         }
+
         public static string SMSProvider_FormatterUpper(MyMessage message)
         {
             return $"{message.Text.ToUpper()}";
@@ -159,15 +167,12 @@ namespace MobilePhoneProjLab2WinForm
             return $"{message.Text.ToLower()}";
         }
 
-        private void listViewSms_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void listViewSms_SelectedIndexChanged(object sender, EventArgs e) {}
 
-        }
+        private void comboBoxUser_SelectedIndexChanged(object sender, EventArgs e) {}
 
-        private void comboBoxUser_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-           
-        }
+        private void FormMessageFiltering_Load(object sender, EventArgs e) {}
+
+        private void labelMessages_Click(object sender, EventArgs e) {}
     }
 } 

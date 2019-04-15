@@ -43,13 +43,13 @@ namespace MobilePhoneProjLab2WinForm
             this.labelUser = new System.Windows.Forms.Label();
             this.labelFormat = new System.Windows.Forms.Label();
             this.textBoxFindTxt = new System.Windows.Forms.TextBox();
-            this.labelMessages = new System.Windows.Forms.Label();
             this.labelFindTxt = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimeTo = new System.Windows.Forms.DateTimePicker();
             this.dateTimeFrom = new System.Windows.Forms.DateTimePicker();
+            this.PhoneNo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +68,7 @@ namespace MobilePhoneProjLab2WinForm
             "End with DateTime",
             "Uppercase",
             "Lowercase"});
-            this.comboBoxFormat.Location = new System.Drawing.Point(21, 25);
+            this.comboBoxFormat.Location = new System.Drawing.Point(80, 215);
             this.comboBoxFormat.Name = "comboBoxFormat";
             this.comboBoxFormat.Size = new System.Drawing.Size(245, 21);
             this.comboBoxFormat.TabIndex = 1;
@@ -78,13 +78,14 @@ namespace MobilePhoneProjLab2WinForm
             // 
             this.listViewSms.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.From,
-            this.SmsText});
+            this.SmsText,
+            this.PhoneNo});
             this.listViewSms.FullRowSelect = true;
             this.listViewSms.GridLines = true;
             this.listViewSms.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listViewSms.Location = new System.Drawing.Point(21, 68);
+            this.listViewSms.Location = new System.Drawing.Point(12, 257);
             this.listViewSms.Name = "listViewSms";
-            this.listViewSms.Size = new System.Drawing.Size(355, 321);
+            this.listViewSms.Size = new System.Drawing.Size(619, 341);
             this.listViewSms.TabIndex = 2;
             this.listViewSms.UseCompatibleStateImageBehavior = false;
             this.listViewSms.View = System.Windows.Forms.View.Details;
@@ -97,7 +98,7 @@ namespace MobilePhoneProjLab2WinForm
             // SmsText
             // 
             this.SmsText.Text = "Text";
-            this.SmsText.Width = 300;
+            this.SmsText.Width = 400;
             // 
             // comboBoxUser
             // 
@@ -122,7 +123,7 @@ namespace MobilePhoneProjLab2WinForm
             // labelFormat
             // 
             this.labelFormat.AutoSize = true;
-            this.labelFormat.Location = new System.Drawing.Point(18, 9);
+            this.labelFormat.Location = new System.Drawing.Point(9, 215);
             this.labelFormat.Name = "labelFormat";
             this.labelFormat.Size = new System.Drawing.Size(63, 13);
             this.labelFormat.TabIndex = 5;
@@ -134,15 +135,6 @@ namespace MobilePhoneProjLab2WinForm
             this.textBoxFindTxt.Name = "textBoxFindTxt";
             this.textBoxFindTxt.Size = new System.Drawing.Size(156, 20);
             this.textBoxFindTxt.TabIndex = 6;
-            // 
-            // labelMessages
-            // 
-            this.labelMessages.AutoSize = true;
-            this.labelMessages.Location = new System.Drawing.Point(23, 52);
-            this.labelMessages.Name = "labelMessages";
-            this.labelMessages.Size = new System.Drawing.Size(58, 13);
-            this.labelMessages.TabIndex = 7;
-            this.labelMessages.Text = "Messages:";
             // 
             // labelFindTxt
             // 
@@ -163,9 +155,9 @@ namespace MobilePhoneProjLab2WinForm
             this.groupBox1.Controls.Add(this.textBoxFindTxt);
             this.groupBox1.Controls.Add(this.labelUser);
             this.groupBox1.Controls.Add(this.comboBoxUser);
-            this.groupBox1.Location = new System.Drawing.Point(382, 5);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(227, 226);
+            this.groupBox1.Size = new System.Drawing.Size(313, 190);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filters";
@@ -204,14 +196,18 @@ namespace MobilePhoneProjLab2WinForm
             this.dateTimeFrom.Size = new System.Drawing.Size(92, 20);
             this.dateTimeFrom.TabIndex = 9;
             // 
+            // PhoneNo
+            // 
+            this.PhoneNo.Text = "Phone number";
+            this.PhoneNo.Width = 150;
+            // 
             // FormMessageFiltering
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(621, 449);
+            this.ClientSize = new System.Drawing.Size(641, 612);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.labelMessages);
             this.Controls.Add(this.labelFormat);
             this.Controls.Add(this.listViewSms);
             this.Controls.Add(this.comboBoxFormat);
@@ -219,6 +215,7 @@ namespace MobilePhoneProjLab2WinForm
             this.MinimizeBox = false;
             this.Name = "FormMessageFiltering";
             this.Text = "Message Filtering";
+            this.Load += new System.EventHandler(this.FormMessageFiltering_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -237,13 +234,13 @@ namespace MobilePhoneProjLab2WinForm
         private Label labelUser;
         private Label labelFormat;
         private TextBox textBoxFindTxt;
-        private Label labelMessages;
         private Label labelFindTxt;
         private GroupBox groupBox1;
         private Label label2;
         private Label label1;
         private DateTimePicker dateTimeTo;
         private DateTimePicker dateTimeFrom;
+        private ColumnHeader PhoneNo;
     }
 }
 

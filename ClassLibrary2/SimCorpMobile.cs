@@ -75,6 +75,7 @@ namespace PhoneComponents
             vSMSProvider = new SMSProvider();
             vStorageMessages = new StorageMessages
             {
+                MyCapacity = 100,
                 ListMessages = new List<MyMessage>()
             };
         }
