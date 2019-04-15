@@ -13,6 +13,9 @@ namespace PhoneLibrary
         public List<MyMessage> ListMessages { get { return vListMessages; } set { vListMessages = value; } }
         public int MyCapacity { get { return vMyCapacity; } set { vMyCapacity = value; } }
 
+        public delegate bool MessageAddedDelegate(MyMessage message);
+        public event MessageAddedDelegate MessageAdded;
+
         public  void Add(MyMessage message)
         {
             int availableCap=MyCapacity - ListMessages.Count();
@@ -20,9 +23,18 @@ namespace PhoneLibrary
               { ListMessages.RemoveAt(0);} //remove the oldes one
 
             ListMessages.Add(message);
+            var b=RaiseMessageAdded(message);
         }
 
         public void Remove(MyMessage message)
         { ListMessages.Remove(message); }
+
+        private bool RaiseMessageAdded(MyMessage message)
+        {
+            bool res=false;
+            MessageAddedDelegate handler = MessageAdded as MessageAddedDelegate;
+            if (handler != null) { res=handler(message); }
+            return res;
+        }
     }
 }

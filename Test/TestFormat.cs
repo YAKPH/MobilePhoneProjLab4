@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MobilePhoneProjLab2WinForm;
+using PhoneLibrary;
 
 namespace Test
 {
@@ -9,58 +10,103 @@ namespace Test
     {
         [TestMethod]
         public void TestMethod_FormatterNone()
-        {/*
-            string testMessage = "Message #1 is received.";
-            string expectedStr = "Message #1 is received.\r\n";
+        {
+            string testText = "Message #1 is received.";
+
+            MyMessage TestMessage = new MyMessage()
+            {
+                User = "UserTest",
+                PhoneNo = "+380950000000",
+                ReceivingTime = DateTime.Now,
+                Text = testText
+            };
+
+            string expectedStr = "Message #1 is received.";
             
-            string actualStr = MobilePhoneProjLab2WinForm.Form1.SMSProvider_FormatterNone(testMessage);
+            string actualStr = MobilePhoneProjLab2WinForm.FormMessageFiltering.SMSProvider_FormatterNone(TestMessage);
             Assert.AreEqual(expectedStr, actualStr);
-            */
+            
         }
 
         [TestMethod]
         public void TestMethod_FormatterWithTime()
-        {/*
-            string testMessage = "Message #1 is received.";
-            string expectedStr = $"[{DateTime.Now}]: Message #1 is received.\r\n";
+        {
+            string testText = "Message #1 is received.";
 
-            string actualStr = MobilePhoneProjLab2WinForm.Form1.SMSProvider_FormatterWithTime(testMessage);
+            MyMessage TestMessage = new MyMessage()
+            {
+                User = "UserTest",
+                PhoneNo = "+380950000000",
+                ReceivingTime = DateTime.Now,
+                Text = testText
+            };
+
+            string expectedStr = $"[{DateTime.Now}]: Message #1 is received.";
+
+            string actualStr = MobilePhoneProjLab2WinForm.FormMessageFiltering.SMSProvider_FormatterWithTime(TestMessage);
             Assert.AreEqual(expectedStr, actualStr);
-*/
+
         }
 
 
         [TestMethod]
         public void TestMethod_FormatterWithTimeEnd()
-        {/*
-            string testMessage = "Message #1 is received.";
-            string expectedStr = $"Message #1 is received. [{DateTime.Now}]\r\n";
+        {
+            string testText = "Message #1 is received";
 
-            string actualStr = MobilePhoneProjLab2WinForm.Form1.SMSProvider_FormatterWithTimeEnd(testMessage);
+            MyMessage TestMessage = new MyMessage()
+            {
+                User = "UserTest",
+                PhoneNo = "+380950000000",
+                ReceivingTime = DateTime.Now,
+                Text = testText
+            };
+
+            string expectedStr = $"Message #1 is received [{TestMessage.ReceivingTime}]";
+
+            string actualStr = MobilePhoneProjLab2WinForm.FormMessageFiltering.SMSProvider_FormatterWithTimeEnd(TestMessage);
             Assert.AreEqual(expectedStr, actualStr);
-*/
+
         }
 
         [TestMethod]
         public void TestMethod_FormatterUpper()
-        {/*
-            string testMessage = "Message #1 is received.";
-            string expectedStr = "MESSAGE #1 IS RECEIVED.\r\n";
+        {
+            string testText = "Message #1 is received";
 
-            string actualStr = MobilePhoneProjLab2WinForm.Form1.SMSProvider_FormatterUpper(testMessage);
+            MyMessage TestMessage = new MyMessage()
+            {
+                User = "UserTest",
+                PhoneNo = "+380950000000",
+                ReceivingTime = DateTime.Now,
+                Text = testText
+            };
+
+            string expectedStr = "MESSAGE #1 IS RECEIVED";
+
+            string actualStr = MobilePhoneProjLab2WinForm.FormMessageFiltering.SMSProvider_FormatterUpper(TestMessage);
             Assert.AreEqual(expectedStr, actualStr);
-*/
+
         }
 
         [TestMethod]
         public void TestMethod_FormatterLower()
-        {/*
-            string testMessage = "Message #1 is received.";
-            string expectedStr = $"message #1 is received.\r\n";
+        {
+            string testText = "Message #1 is received";
 
-            string actualStr = MobilePhoneProjLab2WinForm.Form1.SMSProvider_FormatterLower(testMessage);
+            MyMessage TestMessage = new MyMessage()
+            {
+                User = "UserTest",
+                PhoneNo = "+380950000000",
+                ReceivingTime = DateTime.Now,
+                Text = testText
+            };
+
+            string expectedStr = $"message #1 is received";
+
+            string actualStr = MobilePhoneProjLab2WinForm.FormMessageFiltering.SMSProvider_FormatterLower(TestMessage);
             Assert.AreEqual(expectedStr, actualStr);
-*/
+
         }
 
     }

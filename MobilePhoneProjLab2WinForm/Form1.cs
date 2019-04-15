@@ -40,9 +40,14 @@ namespace MobilePhoneProjLab2WinForm
         {
             vMyMobile = mymobile;
             vMyMobile.SMSProvider.SMSReceived += SMSProvider_SMSReceived;
+            vMyMobile.StorageMessages.MessageAdded += StorageMessages_NotifyAdded;
             vSMSCounter = 0;
         }
 
+        private bool StorageMessages_NotifyAdded(MyMessage message)
+        {
+            return this.vMyMobile.StorageMessages.ListMessages.Contains(message);
+        }
 
         private void SMSProvider_SMSReceived(MyMessage message)
         {
@@ -62,7 +67,11 @@ namespace MobilePhoneProjLab2WinForm
             listViewSms.Items.Clear();
 
             //build query for filtering
-            IEnumerable<MyMessage> filterQuery = FilterMessages(listMessages);
+            string filterUser = (string)comboBoxUser.SelectedItem;
+            string filterText = textBoxFindTxt.Text;
+            DateTime toDate = dateTimeTo.Value.Date;
+            DateTime fromDate = dateTimeFrom.Value.Date;
+            IEnumerable<MyMessage> filterQuery = FilterMessages(listMessages, filterUser, filterText, toDate, fromDate);
 
             //display (filtered) messages
             foreach (MyMessage msg in filterQuery)
@@ -74,16 +83,13 @@ namespace MobilePhoneProjLab2WinForm
 
         }
 
-        private IEnumerable<MyMessage> FilterMessages(List<MyMessage> listMessages)
+        public static IEnumerable<MyMessage> FilterMessages(List<MyMessage> listMessages, string filterUser, string filterText, DateTime toDate, DateTime fromDate)
         {
-            var filterUser = comboBoxUser.SelectedItem;
-            var filterText = textBoxFindTxt.Text;
-
             return from msg in listMessages
-                   where (msg.User == (string)filterUser || filterUser == null)
+                   where (msg.User == filterUser || filterUser == null)
                    where (msg.Text.Contains(filterText) || filterText =="")
-                   where msg.ReceivingTime.Date <= dateTimeTo.Value.Date
-                   where msg.ReceivingTime.Date >= dateTimeFrom.Value.Date
+                   where msg.ReceivingTime.Date <= toDate
+                   where msg.ReceivingTime.Date >= fromDate
                    select msg;
         }
 

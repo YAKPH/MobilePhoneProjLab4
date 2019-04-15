@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PhoneLibrary;
 
@@ -8,19 +9,33 @@ namespace Test
     public class TestEvenRaised
     {
         [TestMethod]
-        public void TestMethod1()
-        {/*
-            string expected ="Some message received";
+        public void TesRaiseEventMessageAdded()
+        {
+            // prepare data
+            StorageMessages testStorage = new StorageMessages
+            {
+                MyCapacity = 100,
+                ListMessages = new List<MyMessage>()
+            };
 
-            string actual="";
+            MyMessage AddTestMessage = new MyMessage()
+            {
+                User = "UserTest",
+                PhoneNo = "+380950000000",
+                ReceivingTime = DateTime.Now,
+                Text = $"Test text"
+            };
+            bool expectedFlag = true;
+            bool actualFlag = false ;
 
-            SMSProvider smsProv = new SMSProvider();
-            smsProv.SMSReceived += (string str) => actual = str.ToString();
-   
-            smsProv.DoSMSReceived("Some message received");
+            testStorage.MessageAdded += (MyMessage m) => actualFlag = true;
 
-            Assert.AreEqual(expected, actual);
-        */
-            }
+            //test
+            testStorage.Add(AddTestMessage);
+            
+            //compare
+            Assert.AreEqual(expectedFlag, actualFlag);
+        
+        }
     }
 }
